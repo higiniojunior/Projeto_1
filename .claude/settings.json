@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "git -C \"G:\\Meu Drive\\cursos desenvolvimento\\Projetos claude\\Projeto_1\" add -A; git -C \"G:\\Meu Drive\\cursos desenvolvimento\\Projetos claude\\Projeto_1\" diff --cached --quiet 2>$null; if (-not $?) { git -C \"G:\\Meu Drive\\cursos desenvolvimento\\Projetos claude\\Projeto_1\" commit -m \"auto: atualiza projeto via Claude Code\"; git -C \"G:\\Meu Drive\\cursos desenvolvimento\\Projetos claude\\Projeto_1\" push origin main }",
+            "statusMessage": "Sincronizando com GitHub...",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
