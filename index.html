@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de IMC — Fórmula Trefethen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-badge">Nova Fórmula Científica</div>
+      <h1>Calculadora de IMC</h1>
+      <p class="header-subtitle">Compare o IMC tradicional com a fórmula mais precisa do Prof. Nick Trefethen</p>
+    </div>
+  </header>
+
+  <!-- AD BANNER TOPO -->
+  <div class="ad-wrapper ad-top">
+    <div class="container">
+      <div class="ad-block ad-horizontal">
+        <span class="ad-label">Publicidade</span>
+        <div class="ad-content">
+          <span class="ad-icon">📢</span>
+          <span>Espaço Publicitário — Google AdSense (728×90)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- CALCULADORA -->
+    <section class="card calculator-card">
+      <div class="card-header">
+        <h2>&#9654; Calcule o seu IMC</h2>
+        <p>Preencha os campos abaixo para obter os dois resultados</p>
+      </div>
+      <form id="imc-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="peso">Peso</label>
+            <div class="input-wrapper">
+              <input type="number" id="peso" placeholder="Ex: 70" min="1" max="300" step="0.1" />
+              <span class="input-unit">kg</span>
+            </div>
+            <span class="field-error" id="erro-peso"></span>
+          </div>
+          <div class="form-group">
+            <label for="altura">Altura</label>
+            <div class="input-wrapper">
+              <input type="number" id="altura" placeholder="Ex: 175" min="50" max="250" step="1" />
+              <span class="input-unit">cm</span>
+            </div>
+            <span class="field-error" id="erro-altura"></span>
+          </div>
+        </div>
+        <button type="submit" class="btn-calcular">
+          <span>Calcular IMC</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </section>
+
+    <!-- RESULTADO -->
+    <section id="resultado" class="resultado-section hidden">
+
+      <div class="resultado-cards">
+
+        <!-- IMC Tradicional -->
+        <div class="resultado-card card-tradicional">
+          <div class="card-formula-label">Fórmula Tradicional (1832)</div>
+          <div class="imc-valor" id="val-trad">—</div>
+          <div class="imc-classificacao" id="class-trad"></div>
+          <div class="imc-formula-detalhe">peso ÷ altura²</div>
+        </div>
+
+        <div class="versus-divider">VS</div>
+
+        <!-- IMC Trefethen -->
+        <div class="resultado-card card-trefethen destaque">
+          <div class="card-formula-label">Nova Fórmula — Trefethen</div>
+          <div class="imc-valor" id="val-tref">—</div>
+          <div class="imc-classificacao" id="class-tref"></div>
+          <div class="imc-formula-detalhe">1,3 × peso ÷ altura<sup>2,5</sup></div>
+        </div>
+
+      </div>
+
+      <!-- Barra de progresso -->
+      <div class="barra-container card">
+        <h3>Onde você está na escala?</h3>
+        <div class="barra-escala">
+          <div class="barra-faixas">
+            <div class="faixa faixa-baixo" style="flex:3">Abaixo</div>
+            <div class="faixa faixa-normal" style="flex:3.2">Normal</div>
+            <div class="faixa faixa-sobre" style="flex:2.4">Sobrepeso</div>
+            <div class="faixa faixa-ob1" style="flex:2.4">Ob. I</div>
+            <div class="faixa faixa-ob2" style="flex:2.4">Ob. II</div>
+            <div class="faixa faixa-ob3" style="flex:2.6">Ob. III</div>
+          </div>
+          <div class="barra-ponteiros">
+            <div class="ponteiro ponteiro-trad" id="ponteiro-trad">
+              <div class="ponteiro-linha"></div>
+              <div class="ponteiro-label">Trad.</div>
+            </div>
+            <div class="ponteiro ponteiro-tref" id="ponteiro-tref">
+              <div class="ponteiro-linha"></div>
+              <div class="ponteiro-label">Tref.</div>
+            </div>
+          </div>
+          <div class="barra-numeros">
+            <span>0</span><span>18,5</span><span>25</span><span>30</span><span>35</span><span>40</span><span>50+</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mensagem personalizada -->
+      <div class="mensagem-card card" id="mensagem-card">
+        <div class="mensagem-icone" id="mensagem-icone">✅</div>
+        <div class="mensagem-texto" id="mensagem-texto"></div>
+      </div>
+
+      <!-- Tabela OMS -->
+      <div class="tabela-container card">
+        <h3>Classificação da OMS — Faixas de IMC</h3>
+        <table class="tabela-oms">
+          <thead>
+            <tr>
+              <th>IMC</th>
+              <th>Classificação</th>
+              <th>Risco de doenças</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="linha-baixo" data-min="0" data-max="18.5">
+              <td><strong>&lt; 18,5</strong></td>
+              <td>&#127810; Abaixo do peso</td>
+              <td>Aumentado</td>
+            </tr>
+            <tr class="linha-normal" data-min="18.5" data-max="25">
+              <td><strong>18,5 – 24,9</strong></td>
+              <td>&#127823; Peso normal</td>
+              <td>Normal (menor risco)</td>
+            </tr>
+            <tr class="linha-sobre" data-min="25" data-max="30">
+              <td><strong>25,0 – 29,9</strong></td>
+              <td>&#127825; Sobrepeso</td>
+              <td>Levemente aumentado</td>
+            </tr>
+            <tr class="linha-ob1" data-min="30" data-max="35">
+              <td><strong>30,0 – 34,9</strong></td>
+              <td>&#128308; Obesidade Grau I</td>
+              <td>Moderado</td>
+            </tr>
+            <tr class="linha-ob2" data-min="35" data-max="40">
+              <td><strong>35,0 – 39,9</strong></td>
+              <td>&#128308; Obesidade Grau II</td>
+              <td>Alto</td>
+            </tr>
+            <tr class="linha-ob3" data-min="40" data-max="999">
+              <td><strong>&ge; 40,0</strong></td>
+              <td>&#128308; Obesidade Grau III</td>
+              <td>Muito alto</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="tabela-nota">* A tabela destaca a linha correspondente ao seu resultado Trefethen.</p>
+      </div>
+
+    </section>
+
+    <!-- AD MEIO -->
+    <div class="ad-block ad-square ad-center">
+      <span class="ad-label">Publicidade</span>
+      <div class="ad-content">
+        <span class="ad-icon">📢</span>
+        <span>Espaço Publicitário — Google AdSense (300×250)</span>
+      </div>
+    </div>
+
+    <!-- EXPLICAÇÃO -->
+    <section class="card explicacao-card">
+      <h2>&#128218; A Nova Fórmula do IMC</h2>
+
+      <div class="explicacao-destaque">
+        <div class="formula-box">
+          <span class="formula-texto">IMC = 1,3 × <strong>P</strong> ÷ <strong>H</strong><sup>2,5</sup></span>
+          <span class="formula-legenda">P = peso em kg &nbsp;|&nbsp; H = altura em metros</span>
+        </div>
+      </div>
+
+      <div class="explicacao-blocos">
+        <div class="explicacao-bloco">
+          <div class="explicacao-icone">🔬</div>
+          <div>
+            <h3>Quem propôs e por quê?</h3>
+            <p>O professor <strong>Nick Trefethen</strong>, matemático da Universidade de Oxford e membro da Royal Society, publicou a nova fórmula após perceber que o IMC tradicional — criado em 1832 pelo estatístico belga Adolphe Quetelet — produz distorções sistemáticas:</p>
+            <ul>
+              <li>Para pessoas <strong>altas</strong>, o IMC tradicional tende a <em>superestimar</em> o índice (classifica como gordo quem não é).</li>
+              <li>Para pessoas <strong>baixas</strong>, tende a <em>subestimar</em> (classifica como normal quem pode ter excesso de gordura).</li>
+            </ul>
+            <p>Ao elevar a altura a <strong>2,5</strong> em vez de 2, a fórmula de Trefethen compensa essa distorção geométrica de forma elegante.</p>
+          </div>
+        </div>
+
+        <div class="explicacao-bloco">
+          <div class="explicacao-icone">📰</div>
+          <div>
+            <h3>Repercussão na imprensa</h3>
+            <p>A proposta foi amplamente divulgada pelo jornal britânico <strong>The Telegraph</strong> e gerou debate entre especialistas de saúde. Embora a OMS ainda utilize a fórmula tradicional como padrão oficial, a fórmula de Trefethen é considerada por muitos pesquisadores como uma alternativa matematicamente mais justa.</p>
+          </div>
+        </div>
+
+        <div class="explicacao-bloco">
+          <div class="explicacao-icone">⚠️</div>
+          <div>
+            <h3>Limitações do IMC</h3>
+            <p>Independente da fórmula, o IMC é uma estimativa. Ele <strong>não distingue músculo de gordura</strong>, não considera distribuição de gordura corporal, nem fatores como etnia, sexo biológico ou idade. Sempre consulte um profissional de saúde para uma avaliação completa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- AD RODAPÉ -->
+  <div class="ad-wrapper ad-bottom">
+    <div class="container">
+      <div class="ad-block ad-horizontal">
+        <span class="ad-label">Publicidade</span>
+        <div class="ad-content">
+          <span class="ad-icon">📢</span>
+          <span>Espaço Publicitário — Google AdSense (728×90)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&#169; 2024 Calculadora IMC Trefethen &nbsp;|&nbsp; Fins educativos e informativos</p>
+      <p class="footer-nota">Esta ferramenta não substitui avaliação médica profissional.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
