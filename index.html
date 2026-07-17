@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -170,6 +171,46 @@
           </tbody>
         </table>
         <p class="tabela-nota">* A tabela destaca a linha correspondente ao seu resultado Trefethen.</p>
+      </div>
+
+      <!-- PESO IDEAL -->
+      <div class="peso-ideal-container card">
+        <h3>&#127919; Peso ideal (fórmula Trefethen)</h3>
+        <p class="peso-ideal-intro">Faixa de peso ideal para a sua altura, calculada com a fórmula de Trefethen usando o IMC normal (18,5 – 25).</p>
+
+        <div class="peso-ideal-intervalo">
+          <span id="peso-ideal-min">—</span> kg &ndash; <span id="peso-ideal-max">—</span> kg
+        </div>
+
+        <div class="comparacao-corpos">
+          <div class="corpo-coluna">
+            <svg class="corpo-silhueta" id="corpo-atual" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="30" r="22" />
+              <rect x="14" y="60" width="14" height="55" rx="7" />
+              <rect x="72" y="60" width="14" height="55" rx="7" />
+              <rect x="30" y="55" width="40" height="70" rx="18" />
+              <rect x="32" y="125" width="14" height="65" rx="7" />
+              <rect x="54" y="125" width="14" height="65" rx="7" />
+            </svg>
+            <span class="corpo-legenda">Atual</span>
+          </div>
+
+          <svg class="seta-comparacao" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+
+          <div class="corpo-coluna">
+            <svg class="corpo-silhueta corpo-ideal" id="corpo-ideal" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="30" r="22" />
+              <rect x="14" y="60" width="14" height="55" rx="7" />
+              <rect x="72" y="60" width="14" height="55" rx="7" />
+              <rect x="30" y="55" width="40" height="70" rx="18" />
+              <rect x="32" y="125" width="14" height="65" rx="7" />
+              <rect x="54" y="125" width="14" height="65" rx="7" />
+            </svg>
+            <span class="corpo-legenda">Peso ideal</span>
+          </div>
+        </div>
       </div>
 
     </section>

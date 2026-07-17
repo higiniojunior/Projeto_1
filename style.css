@@ -467,6 +467,71 @@ body {
 }
 
 /* =============================================
+   PESO IDEAL
+   ============================================= */
+.peso-ideal-container h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--texto);
+}
+
+.peso-ideal-intro {
+  font-size: 0.85rem;
+  color: var(--texto-sub);
+  margin-bottom: 16px;
+}
+
+.peso-ideal-intervalo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--roxo);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.comparacao-corpos {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 24px;
+}
+
+.corpo-coluna {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.corpo-silhueta {
+  width: 90px;
+  height: 160px;
+  color: var(--texto-sub);
+  transform-origin: 50% 100%;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.4s;
+}
+
+.corpo-silhueta circle,
+.corpo-silhueta rect { fill: currentColor; }
+
+.corpo-ideal { color: var(--verde); }
+
+.corpo-legenda {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--texto-sub);
+}
+
+.seta-comparacao {
+  width: 24px;
+  height: 24px;
+  color: var(--texto-sub);
+  flex-shrink: 0;
+  margin-bottom: 40px;
+}
+
+/* =============================================
    EXPLICAÇÃO
    ============================================= */
 .explicacao-card h2 {
@@ -581,4 +646,8 @@ body {
   .barra-numeros { font-size: 0.6rem; }
 
   .explicacao-bloco { flex-direction: column; gap: 10px; }
+
+  .comparacao-corpos { gap: 14px; }
+  .corpo-silhueta { width: 70px; height: 125px; }
+  .peso-ideal-intervalo { font-size: 1.3rem; }
 }

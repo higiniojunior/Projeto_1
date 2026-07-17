@@ -59,6 +59,18 @@ function validar(peso, altCm) {
   return ok;
 }
 
+function calcularPesoIdeal(h) {
+  return {
+    min: 18.5 * Math.pow(h, 2.5) / 1.3,
+    max: 25   * Math.pow(h, 2.5) / 1.3,
+  };
+}
+
+function escalaCorpo(imc) {
+  const escala = 1 + (imc - 21.75) * 0.018;
+  return Math.min(Math.max(escala, 0.8), 1.5);
+}
+
 function destacarLinha(imcTref) {
   const linhas = document.querySelectorAll('.tabela-oms tbody tr');
   linhas.forEach(tr => {
@@ -104,6 +116,16 @@ form.addEventListener('submit', e => {
   document.getElementById('mensagem-texto').innerHTML          = classTref.msg;
 
   destacarLinha(imcTref);
+
+  const pesoIdeal = calcularPesoIdeal(h);
+  document.getElementById('peso-ideal-min').textContent = pesoIdeal.min.toFixed(1);
+  document.getElementById('peso-ideal-max').textContent = pesoIdeal.max.toFixed(1);
+
+  const corpoAtual = document.getElementById('corpo-atual');
+  corpoAtual.style.transform = `scaleX(${escalaCorpo(imcTref)})`;
+  corpoAtual.className = 'corpo-silhueta ' + classTref.cor;
+
+  document.getElementById('corpo-ideal').style.transform = 'scaleX(1)';
 
   if (secaoRes.classList.contains('hidden')) {
     secaoRes.classList.remove('hidden');
