@@ -7,8 +7,8 @@
   <title>Calculadora de IMC — Fórmula Trefethen</title>
 
   <!-- SEO -->
-  <meta name="description" content="Calcule seu IMC e compare a fórmula tradicional com a nova fórmula do professor Nick Trefethen (Oxford). Descubra sua classificação, faixa de peso ideal e entenda as diferenças entre os dois cálculos." />
-  <meta name="keywords" content="calculadora de imc, imc trefethen, fórmula trefethen, novo imc, peso ideal, índice de massa corporal" />
+  <meta name="description" content="Calcule seu IMC e compare a fórmula tradicional com a nova fórmula do professor Nick Trefethen (Oxford) — mais precisa para pessoas muito altas ou muito baixas. Descubra sua classificação, faixa de peso ideal e entenda as diferenças entre os dois cálculos." />
+  <meta name="keywords" content="calculadora de imc, imc trefethen, fórmula trefethen, novo imc, peso ideal, índice de massa corporal, imc para pessoas altas, imc para pessoas baixas, imc pessoa de 1,90, imc pessoa de 1,55, calculadora de imc para alta estatura" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://higiniojunior.github.io/Projeto_1/" />
 
@@ -26,6 +26,10 @@
   <meta name="twitter:description" content="Compare o IMC tradicional com a nova fórmula do Prof. Nick Trefethen e descubra sua faixa de peso ideal." />
   <meta name="twitter:image" content="https://higiniojunior.github.io/Projeto_1/og-image.png" />
 
+  <!-- TODO (pós-aprovação AdSense): adicionar aqui a tag de verificação, ex:
+  <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXX" />
+  e o script <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -42,6 +46,7 @@
   </header>
 
   <!-- AD BANNER TOPO -->
+  <!-- TODO (pós-aprovação AdSense): trocar o .ad-block abaixo pelo <ins class="adsbygoogle"> real -->
   <div class="ad-wrapper ad-top">
     <div class="container">
       <div class="ad-block ad-horizontal">
@@ -237,6 +242,7 @@
     </section>
 
     <!-- AD MEIO -->
+    <!-- TODO (pós-aprovação AdSense): trocar o .ad-block abaixo pelo <ins class="adsbygoogle"> real -->
     <div class="ad-block ad-square ad-center">
       <span class="ad-label">Publicidade</span>
       <div class="ad-content">
@@ -288,9 +294,62 @@
       </div>
     </section>
 
+    <!-- SEO: ALTURA EXTREMA -->
+    <section class="card explicacao-card" id="altura-extrema">
+      <h2>&#128207; IMC para pessoas muito altas ou muito baixas</h2>
+      <p>A fórmula tradicional do IMC foi criada a partir de dados de uma população europeia do século XIX e apresenta distorções conhecidas nos extremos de estatura. Veja como isso muda a classificação na prática:</p>
+
+      <div class="explicacao-blocos">
+        <div class="explicacao-bloco">
+          <div class="explicacao-icone">⬆️</div>
+          <div>
+            <h3>Exemplo: pessoa de 2,00 m e 105 kg</h3>
+            <p>Pela fórmula tradicional, o IMC é <strong>26,3</strong> — classificado como <strong>sobrepeso</strong>. Pela fórmula de Trefethen, o IMC é <strong>24,1</strong> — dentro do <strong>peso normal</strong>. Para pessoas altas, a fórmula tradicional costuma <em>superestimar</em> o IMC.</p>
+          </div>
+        </div>
+        <div class="explicacao-bloco">
+          <div class="explicacao-icone">⬇️</div>
+          <div>
+            <h3>Exemplo: pessoa de 1,50 m e 56 kg</h3>
+            <p>Pela fórmula tradicional, o IMC é <strong>24,9</strong> — ainda classificado como <strong>peso normal</strong>. Pela fórmula de Trefethen, o IMC é <strong>26,4</strong> — já <strong>sobrepeso</strong>. Para pessoas baixas, a fórmula tradicional costuma <em>subestimar</em> o IMC.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="explicacao-destaque" style="margin-top:24px;">
+        <p>Quer conferir o seu caso? <a href="#imc-form">Use a calculadora no topo da página</a> e compare os dois resultados lado a lado.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="card explicacao-card" id="faq">
+      <h2>&#10067; Perguntas frequentes</h2>
+      <div class="explicacao-blocos">
+        <div class="explicacao-bloco">
+          <div>
+            <h3>Qual a melhor fórmula de IMC para pessoas muito altas?</h3>
+            <p>Para pessoas acima de 1,90 m, a fórmula de Trefethen (1,3 × peso ÷ altura<sup>2,5</sup>) costuma refletir melhor a composição corporal, pois evita a superestimativa do IMC tradicional.</p>
+          </div>
+        </div>
+        <div class="explicacao-bloco">
+          <div>
+            <h3>Qual a melhor fórmula de IMC para pessoas muito baixas?</h3>
+            <p>Para pessoas abaixo de 1,55 m, a fórmula tradicional tende a subestimar o IMC. A fórmula de Trefethen ajuda a identificar excesso de peso que passaria despercebido.</p>
+          </div>
+        </div>
+        <div class="explicacao-bloco">
+          <div>
+            <h3>A fórmula de Trefethen substitui o IMC tradicional?</h3>
+            <p>Não oficialmente. A OMS ainda usa a fórmula tradicional como padrão, mas a fórmula de Trefethen é considerada por muitos pesquisadores uma alternativa matematicamente mais justa para estaturas fora da média.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- AD RODAPÉ -->
+  <!-- TODO (pós-aprovação AdSense): trocar o .ad-block abaixo pelo <ins class="adsbygoogle"> real -->
   <div class="ad-wrapper ad-bottom">
     <div class="container">
       <div class="ad-block ad-horizontal">
@@ -308,8 +367,42 @@
     <div class="container">
       <p>&#169; 2024 Calculadora IMC Trefethen &nbsp;|&nbsp; Fins educativos e informativos</p>
       <p class="footer-nota">Esta ferramenta não substitui avaliação médica profissional.</p>
+      <p class="footer-nota"><a href="privacidade.html">Política de Privacidade</a></p>
     </div>
   </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qual a melhor fórmula de IMC para pessoas muito altas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para pessoas acima de 1,90 m, a fórmula de Trefethen (1,3 × peso ÷ altura elevado a 2,5) costuma refletir melhor a composição corporal, pois evita a superestimativa do IMC tradicional."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual a melhor fórmula de IMC para pessoas muito baixas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para pessoas abaixo de 1,55 m, a fórmula tradicional tende a subestimar o IMC. A fórmula de Trefethen ajuda a identificar excesso de peso que passaria despercebido."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A fórmula de Trefethen substitui o IMC tradicional?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não oficialmente. A OMS ainda usa a fórmula tradicional como padrão, mas a fórmula de Trefethen é considerada por muitos pesquisadores uma alternativa matematicamente mais justa para estaturas fora da média."
+        }
+      }
+    ]
+  }
+  </script>
 
   <script src="script.js"></script>
 </body>
