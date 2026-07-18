@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Calorias Diárias — Fórmula Mifflin-St Jeor</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Calcule quantas calorias você precisa comer por dia usando a fórmula de Mifflin-St Jeor. Descubra sua Taxa Metabólica Basal (TMB) e suas metas de calorias para perder, manter ou ganhar peso." />
+  <meta name="keywords" content="calculadora de calorias, calculadora de calorias diárias, taxa metabólica basal, tmb, mifflin-st jeor, quantas calorias comer por dia, calorias para perder peso, calorias para ganhar peso, gasto calórico diário" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://higiniojunior.github.io/Projeto_1/calorias.html" />
+
+  <!-- Open Graph (compartilhamento em redes sociais / WhatsApp) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Calculadora de Calorias Diárias — Fórmula Mifflin-St Jeor" />
+  <meta property="og:description" content="Descubra sua Taxa Metabólica Basal e quantas calorias comer por dia para perder, manter ou ganhar peso." />
+  <meta property="og:url" content="https://higiniojunior.github.io/Projeto_1/calorias.html" />
+  <meta property="og:image" content="https://higiniojunior.github.io/Projeto_1/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Calculadora de Calorias Diárias — Fórmula Mifflin-St Jeor" />
+  <meta name="twitter:description" content="Descubra sua Taxa Metabólica Basal e quantas calorias comer por dia para perder, manter ou ganhar peso." />
+  <meta name="twitter:image" content="https://higiniojunior.github.io/Projeto_1/og-image.png" />
+
+  <!-- TODO (pós-aprovação AdSense): adicionar aqui a tag de verificação, ex:
+  <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXX" />
+  e o script <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="site-nav">
+        <a href="index.html">Calculadora de IMC</a>
+        <a href="calorias.html" class="nav-ativo">Calculadora de Calorias</a>
+      </nav>
+      <h1>Calculadora de Calorias Diárias</h1>
+      <div class="header-badge">Fórmula Mifflin-St Jeor</div>
+      <p class="header-subtitle">Descubra sua Taxa Metabólica Basal e quantas calorias comer para perder, manter ou ganhar peso</p>
+    </div>
+  </header>
+
+  <!-- AD BANNER TOPO -->
+  <!-- TODO (pós-aprovação AdSense): trocar o .ad-block abaixo pelo <ins class="adsbygoogle"> real -->
+  <div class="ad-wrapper ad-top">
+    <div class="container">
+      <div class="ad-block ad-horizontal ad-house">
+        <span class="ad-label">Publicidade</span>
+        <div class="ad-content">
+          <span class="ad-icon">📣</span>
+          <span><strong>Anuncie aqui</strong> — alcance milhares de visitantes interessados em saúde e bem-estar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- CALCULADORA -->
+    <section class="card calculator-card">
+      <div class="card-header">
+        <h2>&#9654; Calcule suas calorias diárias</h2>
+        <p>Preencha os campos abaixo e descubra sua TMB e suas metas de calorias</p>
+      </div>
+      <form id="calorias-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="peso">Peso</label>
+            <div class="input-wrapper">
+              <input type="number" id="peso" placeholder="Ex: 70" min="1" max="300" step="0.1" />
+              <span class="input-unit">kg</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="altura">Altura</label>
+            <div class="input-wrapper">
+              <input type="number" id="altura" placeholder="Ex: 175" min="50" max="250" step="1" />
+              <span class="input-unit">cm</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="idade">Idade</label>
+            <div class="input-wrapper">
+              <input type="number" id="idade" placeholder="Ex: 30" min="15" max="100" step="1" />
+              <span class="input-unit">anos</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sexo">Sexo biológico</label>
+            <div class="input-wrapper">
+              <select id="sexo">
+                <option value="">Selecione</option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:24px;">
+          <label for="atividade">Nível de atividade física</label>
+          <div class="input-wrapper">
+            <select id="atividade">
+              <option value="1.2">Sedentário (pouco ou nenhum exercício)</option>
+              <option value="1.375">Leve (exercício leve 1–3x/semana)</option>
+              <option value="1.55">Moderado (exercício moderado 3–5x/semana)</option>
+              <option value="1.725">Intenso (exercício intenso 6–7x/semana)</option>
+              <option value="1.9">Muito intenso (atleta / trabalho físico pesado)</option>
+            </select>
+          </div>
+        </div>
+        <span class="field-error" id="erro-calorias"></span>
+        <button type="submit" class="btn-calcular">
+          <span>Calcular Calorias</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </section>
+
+    <!-- RESULTADO -->
+    <section id="resultado-calorias" class="resultado-section hidden">
+
+      <div class="resultado-card destaque" style="margin:28px 0;">
+        <div class="card-formula-label">Taxa Metabólica Basal (TMB)</div>
+        <div class="imc-valor" id="tmb-valor">—</div>
+        <div class="imc-formula-detalhe">calorias que seu corpo gasta em repouso</div>
+      </div>
+
+      <div class="resultado-cards">
+        <div class="resultado-card">
+          <div class="card-formula-label">Perder peso</div>
+          <div class="imc-valor cor-baixo" id="meta-perder">—</div>
+          <div class="imc-formula-detalhe">kcal/dia</div>
+        </div>
+        <div class="resultado-card destaque">
+          <div class="card-formula-label">Manter peso</div>
+          <div class="imc-valor cor-normal" id="meta-manter">—</div>
+          <div class="imc-formula-detalhe">kcal/dia</div>
+        </div>
+        <div class="resultado-card">
+          <div class="card-formula-label">Ganhar peso</div>
+          <div class="imc-valor" id="meta-ganhar">—</div>
+          <div class="imc-formula-detalhe">kcal/dia</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- AD MEIO -->
+    <!-- TODO (pós-aprovação AdSense): trocar o .ad-block abaixo pelo <ins class="adsbygoogle"> real -->
+    <div class="ad-block ad-square ad-center ad-house">
+      <span class="ad-label">Publicidade</span>
+      <div class="ad-content">
+        <span class="ad-icon">📣</span>
+        <span><strong>Anuncie aqui</strong></span>
+      </div>
+      <span class="ad-house-sub">Seu produto ou serviço em destaque para milhares de visitantes</span>
+    </div>
+
+    <!-- EXPLICAÇÃO -->
+    <section class="card explicacao-card">
+      <h2>&#128293; O que é TMB e como calculamos suas calorias</h2>
+
+      <div class="explicacao-destaque">
+        <div class="formula-box">
+          <span class="formula-texto">TMB = 10×P + 6,25×A &minus; 5×I &plusmn; S</span>
+          <span class="formula-legenda">P = peso em kg &nbsp;|&nbsp; A = altura em cm &nbsp;|&nbsp; I = idade &nbsp;|&nbsp; S = +5 (homens) ou &minus;161 (mulheres)</span>
+        </div>
+      </div>
+
+      <div class="explicacao-blocos">
+        <div class="explicacao-bloco">
+          <div class="explicacao-icone">🔬</div>
+          <div>
+            <h3>O que é Taxa Metabólica Basal (TMB)?</h3>
+            <p>A TMB é a quantidade de calorias que o seu corpo gasta apenas para manter funções vitais em repouso — respiração, circulação, produção de células — sem contar nenhuma atividade física. É o ponto de partida para calcular quantas calorias você realmente precisa por dia.</p>
+          </div>
+        </div>
+
+        <div class="explicacao-bloco">
+          <div class="explicacao-icone">📐</div>
+          <div>
+            <h3>Por que a fórmula de Mifflin-St Jeor?</h3>
+            <p>Criada em 1990, a fórmula de Mifflin-St Jeor é considerada pela maioria dos nutricionistas mais precisa que a antiga fórmula de Harris-Benedict (1919), por refletir melhor a composição corporal das populações atuais.</p>
+          </div>
+        </div>
+
+        <div class="explicacao-bloco">
+          <div class="explicacao-icone">⚖️</div>
+          <div>
+            <h3>Déficit e superávit calórico</h3>
+            <p>Para <strong>perder peso</strong> de forma moderada (cerca de 0,5 kg por semana), a recomendação geral é consumir <strong>500 kcal a menos</strong> do que o seu gasto de manutenção. Para <strong>ganhar peso</strong>, o caminho inverso: <strong>500 kcal a mais</strong>. Esses números são estimativas — o ideal é acompanhamento com nutricionista para ajustes personalizados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABELA DE ATIVIDADE FÍSICA -->
+    <div class="tabela-container card">
+      <h3>Fatores de atividade física</h3>
+      <table class="tabela-oms">
+        <thead>
+          <tr>
+            <th>Nível</th>
+            <th>Descrição</th>
+            <th>Multiplicador</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sedentário</strong></td>
+            <td>Pouco ou nenhum exercício</td>
+            <td>1,2</td>
+          </tr>
+          <tr>
+            <td><strong>Leve</strong></td>
+            <td>Exercício leve 1–3x/semana</td>
+            <td>1,375</td>
+          </tr>
+          <tr>
+            <td><strong>Moderado</strong></td>
+            <td>Exercício moderado 3–5x/semana</td>
+            <td>1,55</td>
+          </tr>
+          <tr>
+            <td><strong>Intenso</strong></td>
+            <td>Exercício intenso 6–7x/semana</td>
+            <td>1,725</td>
+          </tr>
+          <tr>
+            <td><strong>Muito intenso</strong></td>
+            <td>Atleta ou trabalho físico pesado</td>
+            <td>1,9</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tabela-nota">* Suas calorias de manutenção = TMB × multiplicador do seu nível de atividade.</p>
+    </div>
+
+    <div class="explicacao-destaque">
+      <p>Quer saber também o seu IMC? Use nossa <a href="index.html">Calculadora de IMC (fórmula Trefethen)</a>.</p>
+    </div>
+
+    <!-- FAQ -->
+    <section class="card explicacao-card" id="faq">
+      <h2>&#10067; Perguntas frequentes</h2>
+      <div class="explicacao-blocos">
+        <div class="explicacao-bloco">
+          <div>
+            <h3>O que é TMB (Taxa Metabólica Basal)?</h3>
+            <p>É a quantidade de calorias que o corpo gasta em repouso absoluto, apenas para manter funções vitais como respiração e circulação. É a base para calcular seu gasto calórico diário total.</p>
+          </div>
+        </div>
+        <div class="explicacao-bloco">
+          <div>
+            <h3>Qual fórmula é mais precisa: Harris-Benedict ou Mifflin-St Jeor?</h3>
+            <p>A fórmula de Mifflin-St Jeor (1990) é considerada mais precisa para a maioria das pessoas hoje em dia, por refletir melhor a composição corporal das populações atuais do que a antiga fórmula de Harris-Benedict (1919).</p>
+          </div>
+        </div>
+        <div class="explicacao-bloco">
+          <div>
+            <h3>Quantas calorias a menos para perder 1 kg por semana?</h3>
+            <p>Como 1 kg de gordura equivale a aproximadamente 7.700 kcal, um déficit de cerca de 1.100 kcal por dia levaria a uma perda próxima de 1 kg por semana. Déficits tão grandes nem sempre são saudáveis — por isso recomendamos um déficit mais moderado de 500 kcal/dia (~0,5 kg/semana) e acompanhamento profissional.</p>
+          </div>
+        </div>
+        <div class="explicacao-bloco">
+          <div>
+            <h3>Essa calculadora serve para atletas ou gestantes?</h3>
+            <p>Não. Atletas de alto rendimento, gestantes, lactantes e pessoas com condições de saúde específicas têm necessidades calóricas diferentes das estimadas por fórmulas gerais. Nesses casos, consulte um nutricionista ou médico para uma avaliação individualizada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- AD RODAPÉ -->
+  <!-- TODO (pós-aprovação AdSense): trocar o .ad-block abaixo pelo <ins class="adsbygoogle"> real -->
+  <div class="ad-wrapper ad-bottom">
+    <div class="container">
+      <div class="ad-block ad-horizontal ad-house">
+        <span class="ad-label">Publicidade</span>
+        <div class="ad-content">
+          <span class="ad-icon">📣</span>
+          <span><strong>Anuncie aqui</strong> — alcance milhares de visitantes interessados em saúde e bem-estar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&#169; 2024 Calculadora IMC Trefethen &nbsp;|&nbsp; Fins educativos e informativos</p>
+      <p class="footer-nota">Esta ferramenta não substitui avaliação nutricional profissional.</p>
+      <p class="footer-nota"><a href="privacidade.html">Política de Privacidade</a></p>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "O que é TMB (Taxa Metabólica Basal)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "É a quantidade de calorias que o corpo gasta em repouso absoluto, apenas para manter funções vitais como respiração e circulação. É a base para calcular seu gasto calórico diário total."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual fórmula é mais precisa: Harris-Benedict ou Mifflin-St Jeor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A fórmula de Mifflin-St Jeor (1990) é considerada mais precisa para a maioria das pessoas hoje em dia, por refletir melhor a composição corporal das populações atuais do que a antiga fórmula de Harris-Benedict (1919)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quantas calorias a menos para perder 1 kg por semana?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Como 1 kg de gordura equivale a aproximadamente 7.700 kcal, um déficit de cerca de 1.100 kcal por dia levaria a uma perda próxima de 1 kg por semana. Recomendamos um déficit mais moderado de 500 kcal por dia (cerca de 0,5 kg por semana) e acompanhamento profissional."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Essa calculadora serve para atletas ou gestantes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. Atletas de alto rendimento, gestantes, lactantes e pessoas com condições de saúde específicas têm necessidades calóricas diferentes das estimadas por fórmulas gerais. Nesses casos, consulte um nutricionista ou médico para uma avaliação individualizada."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script src="calorias.js"></script>
+</body>
+</html>

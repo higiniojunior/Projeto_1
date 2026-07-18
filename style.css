@@ -61,15 +61,38 @@ body {
 
 .site-header .container { position: relative; }
 
-.header-badge {
-  display: inline-block;
+.site-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.site-nav a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.site-nav a:hover { background: rgba(255,255,255,0.12); color: var(--branco); }
+
+.site-nav a.nav-ativo {
   background: rgba(255,255,255,0.18);
   border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 999px;
-  padding: 5px 16px;
+  color: var(--branco);
+}
+
+.header-badge {
+  display: inline-block;
+  color: rgba(255,255,255,0.85);
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
@@ -123,6 +146,21 @@ body {
 
 .ad-content { display: flex; align-items: center; gap: 10px; }
 .ad-icon { font-size: 1.3rem; }
+
+.ad-house {
+  background: linear-gradient(135deg, rgba(108,63,197,0.08), rgba(59,130,246,0.08));
+  border: 1.5px dashed rgba(108,63,197,0.35);
+  color: var(--texto-sub);
+}
+
+.ad-house .ad-content strong { color: var(--roxo); }
+
+.ad-house-sub {
+  font-size: 0.78rem;
+  color: var(--texto-sub);
+  text-align: center;
+  max-width: 240px;
+}
 
 .ad-horizontal { height: 90px; width: 100%; }
 
@@ -203,6 +241,28 @@ body {
 }
 
 .input-wrapper input.input-erro { border-color: var(--vermelho); }
+
+.input-wrapper select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--cinza-bord);
+  border-radius: var(--raio-sm);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: var(--texto);
+  background: var(--branco);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-wrapper select:focus {
+  border-color: var(--roxo-claro);
+  box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+}
+
+.input-wrapper select.input-erro { border-color: var(--vermelho); }
 
 .input-unit {
   position: absolute;

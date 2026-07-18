@@ -39,8 +39,12 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="container">
-      <div class="header-badge">Nova Fórmula Científica</div>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-ativo">Calculadora de IMC</a>
+        <a href="calorias.html">Calculadora de Calorias</a>
+      </nav>
       <h1>Calculadora de IMC</h1>
+      <div class="header-badge">Nova Fórmula Científica</div>
       <p class="header-subtitle">Compare o IMC tradicional com a fórmula mais precisa do Prof. Nick Trefethen</p>
     </div>
   </header>
@@ -49,11 +53,11 @@
   <!-- TODO (pós-aprovação AdSense): trocar o .ad-block abaixo pelo <ins class="adsbygoogle"> real -->
   <div class="ad-wrapper ad-top">
     <div class="container">
-      <div class="ad-block ad-horizontal">
+      <div class="ad-block ad-horizontal ad-house">
         <span class="ad-label">Publicidade</span>
         <div class="ad-content">
-          <span class="ad-icon">📢</span>
-          <span>Espaço Publicitário — Google AdSense (728×90)</span>
+          <span class="ad-icon">📣</span>
+          <span><strong>Anuncie aqui</strong> — alcance milhares de visitantes interessados em saúde e bem-estar</span>
         </div>
       </div>
     </div>
@@ -239,16 +243,99 @@
         </div>
       </div>
 
+      <!-- CALORIAS (mini) -->
+      <div class="card calorias-mini-card" id="calorias-mini">
+        <div class="card-header">
+          <h2>&#128293; Calcule suas calorias diárias</h2>
+          <p>Usando o peso e a altura que você já informou acima, descubra sua Taxa Metabólica Basal e quantas calorias comer por dia.</p>
+        </div>
+
+        <form id="calorias-mini-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="mini-idade">Idade</label>
+              <div class="input-wrapper">
+                <input type="number" id="mini-idade" placeholder="Ex: 30" min="15" max="100" step="1" />
+                <span class="input-unit">anos</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mini-sexo">Sexo biológico</label>
+              <div class="input-wrapper">
+                <select id="mini-sexo">
+                  <option value="">Selecione</option>
+                  <option value="masculino">Masculino</option>
+                  <option value="feminino">Feminino</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:24px;">
+            <label for="mini-atividade">Nível de atividade física</label>
+            <div class="input-wrapper">
+              <select id="mini-atividade">
+                <option value="1.2">Sedentário (pouco ou nenhum exercício)</option>
+                <option value="1.375">Leve (exercício leve 1–3x/semana)</option>
+                <option value="1.55">Moderado (exercício moderado 3–5x/semana)</option>
+                <option value="1.725">Intenso (exercício intenso 6–7x/semana)</option>
+                <option value="1.9">Muito intenso (atleta / trabalho físico pesado)</option>
+              </select>
+            </div>
+          </div>
+          <span class="field-error" id="erro-calorias-mini"></span>
+          <button type="submit" class="btn-calcular">
+            <span>Calcular Calorias</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <div class="resultado-calorias hidden" id="resultado-calorias-mini">
+          <div class="resultado-card destaque" style="margin:24px 0;">
+            <div class="card-formula-label">Taxa Metabólica Basal (TMB)</div>
+            <div class="imc-valor" id="mini-tmb-valor">—</div>
+            <div class="imc-formula-detalhe">calorias que seu corpo gasta em repouso</div>
+          </div>
+
+          <div class="resultado-cards">
+            <div class="resultado-card">
+              <div class="card-formula-label">Perder peso</div>
+              <div class="imc-valor cor-baixo" id="mini-meta-perder">—</div>
+              <div class="imc-formula-detalhe">kcal/dia</div>
+            </div>
+            <div class="resultado-card destaque">
+              <div class="card-formula-label">Manter peso</div>
+              <div class="imc-valor cor-normal" id="mini-meta-manter">—</div>
+              <div class="imc-formula-detalhe">kcal/dia</div>
+            </div>
+            <div class="resultado-card">
+              <div class="card-formula-label">Ganhar peso</div>
+              <div class="imc-valor" id="mini-meta-ganhar">—</div>
+              <div class="imc-formula-detalhe">kcal/dia</div>
+            </div>
+          </div>
+
+          <p class="tabela-nota" style="text-align:center;">
+            Peso e altura usados: <strong id="mini-peso-usado">—</strong> kg e <strong id="mini-altura-usado">—</strong> cm
+            (<a href="#imc-form">alterar acima</a>)
+          </p>
+        </div>
+
+        <p class="tabela-nota" style="text-align:center;margin-top:20px;">
+          <a href="calorias.html">Ver calculadora completa de calorias, com explicações e tabela de atividade física →</a>
+        </p>
+      </div>
+
     </section>
 
     <!-- AD MEIO -->
     <!-- TODO (pós-aprovação AdSense): trocar o .ad-block abaixo pelo <ins class="adsbygoogle"> real -->
-    <div class="ad-block ad-square ad-center">
+    <div class="ad-block ad-square ad-center ad-house">
       <span class="ad-label">Publicidade</span>
       <div class="ad-content">
-        <span class="ad-icon">📢</span>
-        <span>Espaço Publicitário — Google AdSense (300×250)</span>
+        <span class="ad-icon">📣</span>
+        <span><strong>Anuncie aqui</strong></span>
       </div>
+      <span class="ad-house-sub">Seu produto ou serviço em destaque para milhares de visitantes</span>
     </div>
 
     <!-- EXPLICAÇÃO -->
@@ -352,11 +439,11 @@
   <!-- TODO (pós-aprovação AdSense): trocar o .ad-block abaixo pelo <ins class="adsbygoogle"> real -->
   <div class="ad-wrapper ad-bottom">
     <div class="container">
-      <div class="ad-block ad-horizontal">
+      <div class="ad-block ad-horizontal ad-house">
         <span class="ad-label">Publicidade</span>
         <div class="ad-content">
-          <span class="ad-icon">📢</span>
-          <span>Espaço Publicitário — Google AdSense (728×90)</span>
+          <span class="ad-icon">📣</span>
+          <span><strong>Anuncie aqui</strong> — alcance milhares de visitantes interessados em saúde e bem-estar</span>
         </div>
       </div>
     </div>
@@ -405,5 +492,6 @@
   </script>
 
   <script src="script.js"></script>
+  <script src="calorias.js"></script>
 </body>
 </html>
